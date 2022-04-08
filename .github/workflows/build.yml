@@ -21,7 +21,7 @@ jobs:
             --auto-tls=false
       - name: Run Nginx
         run: |
-          docker run --name nginx -d nginx -p 8080:8080
+          docker run --name nginx -d nginx -p 8080:80
       - name: Sleep a while
         run: |
           sleep 120
