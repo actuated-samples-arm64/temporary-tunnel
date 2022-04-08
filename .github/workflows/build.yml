@@ -15,7 +15,7 @@ jobs:
         run: |
           $HOME/.arkade/bin/inlets-pro http client \
             --token=${{secrets.INLETS_TOKEN}} \
-            --url=wss://{{$secrets.INLETS_URL}} \
+            --url=wss://${{secrets.INLETS_URL}} \
             --upstream=http://127.0.0.1:8080 \
             --license-file $HOME/.inlets/LICENSE \
             --auto-tls=false &
