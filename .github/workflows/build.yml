@@ -7,6 +7,9 @@ jobs:
     steps:
       - name: Get arkade
         run: arkade get inlets-pro
+      - name: Pull Nginx
+        run: |
+          docker pull nginx:latest
       - name: Set license
         run : |
           mkdir $HOME/.inlets/
@@ -19,9 +22,13 @@ jobs:
             --upstream=http://127.0.0.1:8080 \
             --license-file $HOME/.inlets/LICENSE \
             --auto-tls=false &
+      - name: Print tunnel URL
+        run: |
+          echo Access tunnel via https://temp.exit.o6s.io/
       - name: Run Nginx
         run: |
-          docker run --name nginx -p 8080:80 -d nginx
+          docker run --name nginx:latest \
+            -p 8080:80 -d nginx
       - name: Sleep a while
         run: |
           sleep 120
