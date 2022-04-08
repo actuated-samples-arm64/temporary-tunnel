@@ -17,6 +17,7 @@ jobs:
             --token=${{secrets.INLETS_TOKEN}} \
             --url=wss://temp-tunnel.exit.o6s.io \
             --upstream=http://127.0.0.1:8080 \
+            --license-file $HOME/.inlets/LICENSE \
             --auto-tls=false
       - name: Run Nginx
         run: |
