@@ -1,0 +1,26 @@
+name: build
+
+on: push
+jobs:
+  my-job:
+    runs-on: self-hosted
+    steps:
+      - name: Get arkade
+        run: arkade get inlets-pro
+      - name: Set license
+        run : |
+          mkdir $HOME/.inlets/
+          echo ${secrets.LICENSE} > $HOME/.inlets/
+      - name: Run tunnel
+        run: |
+          inlets-pro http client \
+            --token=${secrets.INLETS_TOKEN} \
+            --url=wss://temp-tunnel.exit.o6s.io \
+            --upstream=http://127.0.0.1:8080 \
+            --auto-tls=false
+      - name: Run Nginx
+        run: |
+          docker run --name nginx -d nginx -p 8080:8080
+      - name: Sleep a while
+        run: |
+          sleep 120
