@@ -18,7 +18,7 @@ jobs:
             --url=wss://temp-tunnel.exit.o6s.io \
             --upstream=http://127.0.0.1:8080 \
             --license-file $HOME/.inlets/LICENSE \
-            --auto-tls=false
+            --auto-tls=false &
       - name: Run Nginx
         run: |
           docker run --name nginx -d nginx -p 8080:80
