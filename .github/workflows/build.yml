@@ -27,8 +27,8 @@ jobs:
           echo Access tunnel via https://temp.exit.o6s.io/
       - name: Run Nginx
         run: |
-          docker run --name nginx:latest \
-            -p 8080:80 -d nginx
+          docker run --name nginx \
+            -p 8080:80 -d nginx:latest
       - name: Sleep a while
         run: |
           sleep 120
