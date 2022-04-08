@@ -10,7 +10,7 @@ jobs:
       - name: Set license
         run : |
           mkdir $HOME/.inlets/
-          echo ${{secrets.LICENSE}} > $HOME/.inlets/LICENSE
+          echo ${{secrets.INLETS_LICENSE}} > $HOME/.inlets/LICENSE
       - name: Run tunnel
         run: |
           $HOME/.arkade/bin/inlets-pro http client \
